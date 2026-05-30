@@ -32,24 +32,39 @@ Configure IP addresses on all interfaces
 Enable interfaces:
 
 no shutdown
+
 - 🟢 <b>Step 2: Configure Loopback Interfaces</b>
+
 On Each Router (R1–R4)
+
 Example (R1)
+
 enable
+
 conf t
+
 interface loopback 0
+
 ip address 1.1.1.1 255.255.255.255
+
 Repeat:
+
 R2 → 2.2.2.2 /32
+
 R3 → 3.3.3.3 /32
+
 R4 → 4.4.4.4 /32
+
 🔍 Verify
+
 show ip interface brief
 
 ✅ Loopback should be:
 
 up/up
+
 Always active unless manually shut down
+
 - 🟢 <b>Step 3: Configure EIGRP</b>
 
 🔹 On R4 (Quick Method – Lab Shortcut)
