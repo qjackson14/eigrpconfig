@@ -20,19 +20,19 @@
 
 
 <h2>Step-by-Step</h2>
-🟢 Step 1: Configure Basic Settings (Prerequisite)
+- 🟢 <b></b>Step 1: Configure Basic Settings (Prerequisite)</b>
 
-(Done beforehand in lab, but required if starting fresh)
 
 Set hostname:
 
 hostname R1
+
 Configure IP addresses on all interfaces
 
 Enable interfaces:
 
 no shutdown
-🟢 Step 2: Configure Loopback Interfaces
+- 🟢 <b>Step 2: Configure Loopback Interfaces</b>
 On Each Router (R1–R4)
 Example (R1)
 enable
@@ -50,19 +50,32 @@ show ip interface brief
 
 up/up
 Always active unless manually shut down
-🟢 Step 3: Configure EIGRP
+- 🟢 <b>Step 3: Configure EIGRP</b>
+
 🔹 On R4 (Quick Method – Lab Shortcut)
+
 router eigrp 100
+
 network 0.0.0.0 255.255.255.255
+
 no auto-summary
+
 passive-interface g0/0
+
 passive-interface loopback0
+
 🔹 On R3 (Precise Method)
+
 router eigrp 100
+
 network 10.0.13.0 0.0.0.3
+
 network 10.0.34.0 0.0.0.3
+
 network 3.3.3.3 0.0.0.0
+
 no auto-summary
+
 passive-interface loopback0
 🔹 On R2
 router eigrp 100
