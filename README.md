@@ -20,7 +20,7 @@
 
 
 <h2>Step-by-Step</h2>
-- 🟢 <b></b>Step 1: Configure Basic Settings (Prerequisite)</b>
+- 🟢 <b>Step 1: Configure Basic Settings (Prerequisite)</b>
 
 
 Set hostname:
@@ -92,69 +92,115 @@ network 3.3.3.3 0.0.0.0
 no auto-summary
 
 passive-interface loopback0
+
 🔹 On R2
+
 router eigrp 100
+
 network 10.0.12.0 0.0.0.3
+
 network 10.0.24.0 0.0.0.3
+
 network 2.2.2.2 0.0.0.0
+
 no auto-summary
+
 passive-interface loopback0
+
 🔹 On R1
+
 router eigrp 100
+
 network 10.0.12.0 0.0.0.3
+
 network 10.0.13.0 0.0.0.3
+
 network 1.1.1.1 0.0.0.0
+
 no auto-summary
+
 passive-interface loopback0
-🟢 Step 4: Verify EIGRP Configuration
+
+- 🟢 <b>Step 4: Verify EIGRP Configuration</b>
+
 Check protocols
+
 show ip protocols
+
 Check neighbors
+
 show ip eigrp neighbors
+
 Check routing table
+
 show ip route eigrp
+
 Check topology table
+
 show ip eigrp topology
+
 🧠 Key Concepts (Important for CCNA)
+
 📊 EIGRP Metric (Simplified)
+
 Based on:
+
 Bandwidth (slowest link)
+
 Delay (sum of all links)
 
 👉 Think:
 
 Metric ≈ Bandwidth + Delay
+
 📚 EIGRP Terminology
+
 Feasible Distance (FD)
+
 → This router’s best metric to destination
+
 Reported Distance (RD)
+
 → Neighbor’s metric to destination
+
 Successor
+
 → Best route (lowest FD)
 
 Feasible Successor
+
 → Backup route that meets condition:
 
 RD < Successor FD
-🟢 Step 5: Configure Unequal-Cost Load Balancing
+
+- 🟢 <b>Step 5: Configure Unequal-Cost Load Balancing</b>
+
 Default behavior:
+
 Only equal-cost paths used
+
 Enable unequal-cost load balancing
 
 On R1:
 
 router eigrp 100
+
 variance 2
+
 What this does:
+
 Allows routes with higher metric to be used
 
 Condition:
 
 Feasible Successor FD ≤ (Successor FD × Variance)
+
 🧪 Verification After Variance
+
 show ip route
 
 ✅ You should now see:
 
 Multiple routes to same destination
+
 Load balancing across unequal paths
